@@ -1,0 +1,24 @@
+﻿@inject ITodoService todoService
+
+<h3>Todos</h3>
+
+<button @onclick="OnCreateTodo">Create new todo</button>
+
+@foreach (var todo in todoService)
+{
+    <div>
+        <div>@todo.Id</div>
+        <div>@todo.Title</div>
+        <div>@todo.Description</div>
+    </div>
+};
+
+
+@code {
+
+    void OnCreateTodo()
+    {
+        todoService.Add(new TodoItem("First todo", "Do something"));
+    }
+
+}
